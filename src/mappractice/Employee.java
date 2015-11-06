@@ -1,8 +1,9 @@
 package mappractice;
 
 import java.util.*;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
 
     private String lastName;
     private String firstName;
@@ -63,6 +64,14 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" + "lastName=" + lastName + ", firstName=" + firstName + ", ssn=" + ssn + '}';
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        
+        return new CompareToBuilder()
+               .append(this.ssn, o.ssn)
+               .toComparison();
     }
 
 }
